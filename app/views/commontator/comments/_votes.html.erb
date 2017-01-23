@@ -1,0 +1,55 @@
+<% # Clients of this partial must provide the following variables:
+   # comment
+   # user
+%>
+
+<% if comment.can_be_voted_on? %>
+  <% can_vote = comment.can_be_voted_on_by?(user) %>
+  <% vote = comment.get_vote_by(user) %>
+  <% comment_voting = comment.thread.config.comment_voting.to_sym %>
+
+  <div class="input-group vote-group pull-right" style="margin: 0px 6px 30px 0">
+    <% if comment_voting == :ld || comment_voting == :l %>
+      <span class="input-group-btn">
+        <% if can_vote && (vote.blank? || !vote.vote_flag) %>
+          <%= form_tag commontator.upvote_comment_path(comment),
+                :method => :put,
+                :remote => true do %>
+            <button class="btn btn-warning disabled" type="submit" style="border-top-right-radius: 0;border-bottom-right-radius: 0;"><i class="fa fa-thumbs-up"></i></button>
+          <% end %>
+        <% elsif can_vote %>
+          <%= form_tag commontator.unvote_comment_path(comment),
+                :method => :put,
+                :remote => true do %>
+            <button class="btn btn-warning" type="submit" style="border-top-right-radius: 0;border-bottom-right-radius: 0;"><i class="fa fa-thumbs-up"></i></button>
+            %>
+          <% end %>
+        <% else %>
+          <button class="btn btn-warning disabled" type="submit" style="border-top-right-radius: 0;border-bottom-right-radius: 0;"><i class="fa fa-thumbs-up"></i></button>
+        <% end %>
+      </span>
+    <% end %>
+
+    <input class="form-control input-transparent" style="text-align: center" value="<%= comment.get_upvotes.size - comment.get_downvotes.size %>">
+
+    <% if comment_voting == :ld %>
+      <span class="input-group-btn">
+        <% if can_vote && (vote.blank? || vote.vote_flag) %>
+          <%= form_tag commontator.downvote_comment_path(comment),
+                :method => :put,
+                :remote => true do %>
+            <button class="btn btn-warning disabled" type="submit" style="border-top-left-radius: 0;border-bottom-left-radius: 0;"><i class="fa fa-thumbs-down"></i></button>
+          <% end %>
+        <% elsif can_vote %>
+          <%= form_tag commontator.unvote_comment_path(comment),
+                :method => :put,
+                :remote => true do %>
+            <button class="btn btn-warning" type="submit" style="border-top-left-radius: 0;border-bottom-left-radius: 0;"><i class="fa fa-thumbs-down"></i></button>
+          <% end %>
+        <% else %>
+          <button class="btn btn-warning disabled" type="submit" style="border-top-left-radius: 0;border-bottom-left-radius: 0;"><i class="fa fa-thumbs-down"></i></button>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+<% end %>

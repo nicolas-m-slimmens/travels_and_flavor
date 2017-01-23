@@ -16,8 +16,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -46,12 +44,25 @@ gem 'simple_form'
 gem 'binding_of_caller'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-instagram'
+gem 'twitter'
+gem 'instagram'
+gem 'omniauth-google-oauth2'
+gem 'google-api-client'
 gem 'acts_as_votable', github: 'ryanto/acts_as_votable'
 gem 'google-analytics-rails'
 gem 'delayed_job_active_record'
+gem 'delayed_job_recurring'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
+gem 'ckeditor'
+gem 'paperclip'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'cancan'
+gem 'commontator'
 
 group :development do
   gem 'better_errors'

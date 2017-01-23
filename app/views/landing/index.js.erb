@@ -1,0 +1,7 @@
+$('#articles').append('<% @articles.each do |article| %> <%= j  render 'article/preview', locals: {article: article} %> <% end %>');
+<% if @articles.next_page %>
+$('.pagination').replaceWith('<%= j will_paginate @articles %>');
+<% else %>
+$(window).off('scroll');
+$('.pagination').remove();
+<% end %>

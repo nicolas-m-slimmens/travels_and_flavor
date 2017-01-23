@@ -1,0 +1,98 @@
+<h2 class="page-title">Articulos <small>Nuevo</small></h2>
+<div class="row">
+  <%= form_for(@article, url: article_index_path, html: {class: "form-horizontal form-label-left"}) do |f| %>
+  <div class="col-lg-8">
+    <section class="widget">
+      <div class="form-horizontal form-label-left">
+        <fieldset>
+          <legend class="section">
+            <i class="fa fa-check-square-o"></i> Parametros <strong>requeridos</strong> para crear un nuevo articulo.
+          </legend>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="title">Titulo</label>
+            <div class="col-sm-9">
+              <%= f.text_field :title, class: "form-control input-transparent", required: "required" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="content">
+              Contenido
+            </label>
+            <div class="col-sm-9">
+              <%= f.cktext_area :body, ckeditor: {:toolbar => 'FULL'}, class: "ckeditor form-control input-transparent" %>
+            </div>
+          </div>
+        </fieldset>
+
+
+
+        <fieldset>
+          <legend class="section">
+            <i class="fa fa-square-o"></i> Parametros <strong>opcionales</strong> para crear un nuevo articulo.
+          </legend>
+
+          <div class="form-group">
+            <label for="description" class="col-sm-3 control-label">Descripción</label>
+            <div class="col-sm-9">
+              <%= f.text_area :description, class: "form-control input-transparent" %>
+              <span class="help-block">Resumen opcional que se puede usar en las vistas anticipadas del articulo</span>
+            </div>
+          </div>
+        </fieldset>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-4">
+            <a href="<%= article_index_path %>" class="btn btn-default btn-form btn-form-end">Cancelar</a>
+            <button type="submit" class="btn btn-success btn-form">Crear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-lg-4">
+    <section class="widget">
+      <header>
+        <h4><i class="fa fa-cog"></i> Opciones <small>de publicación y categorias</small></h4>
+      </header>
+      <div class="body">
+        <div class="form-horizontal form-label-left">
+          <fieldset>
+            <legend class="section">Publicación</legend>
+            <div class="form-group">
+              <label for="article-status" class="control-label col-sm-4">Estado</label>
+              <div class="col-sm-8">
+                <%= f.select :published, options_for_select([['Borrador', 0], ['Publicado', 1]]), {}, { class: "selectpicker", 'data-style' => 'btn-success'} %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="publish-date" class="control-label col-sm-4">Programar para</label>
+              <div class="col-sm-8">
+                <%= f.text_field :available_from, class: "form-control date-picker" %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="section">Categoria y Tags</legend>
+            <div class="form-group">
+              <label for="article-category" class="control-label col-sm-4">Categoria</label>
+              <div class="col-sm-8">
+                <%= f.select :category_id, options_for_select(Category.all.collect { | category | [category.name, category.id]}), {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="article-tags" class="control-label col-sm-4">Tags</label>
+              <div class="col-sm-8">
+                <%= f.text_field :tags, class: "select-block-level" %>
+                <span class="help-block">Escriba o seleccione un tag y presione "Enter" para agregar.</span>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </section>
+  </div>
+  <% end %>
+</div>
+</div>
+<div class="loader-wrap hiding hide">
+  <i class="fa fa-circle-o-notch fa-spin"></i>
+</div>

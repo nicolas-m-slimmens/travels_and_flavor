@@ -1,0 +1,115 @@
+<div class="primary-sidebar">
+  <aside class="widget about-me-widget">
+    <% if user_signed_in? %>
+        <div class="about-me-img">
+
+          <div class="about-me-content text-center">
+            <img src="<%= current_user.identities.first.image %>" alt="" class="img-me">
+
+            <h3 class="text-uppercase"><%= current_user.identities.first.name.nil? ? current_user.identities.first.email : current_user.identities.first.name.capitalize %></h3>
+
+          </div>
+        </div>
+        <%= link_to('Salir', destroy_user_session_path, :method => :delete, class: 'text-uppercase text-center btn btn-signout') %>
+    <% else %>
+        <%= link_to('Ingresar', new_user_session_path, class: 'text-uppercase text-center btn btn-login')  %>
+        <%= link_to('Registrarse', new_user_registration_path, :method => :delete, class: 'text-uppercase text-center btn btn-signout') %>
+    <% end %>
+
+  </aside>
+
+
+  <aside class="widget news-letter">
+    <h3 class="widget-title text-uppercase text-center">Recibí las últimas novedades </h3>
+    <%= form_for(Subscriber.new, url: new_subscriber_path) do |f| %>
+      <%= f.text_field :mail, placeholder: 'Dirección de correo', type: 'email' %>
+      <input type="submit" value="Suscribirse ahora"
+             class="text-uppercase text-center btn btn-subscribe">
+    <% end %>
+  </aside>
+  <aside class="widget">
+    <h3 class="widget-title text-uppercase text-center">Articulos Populares</h3>
+
+    <% Article.order(:cached_weighted_average => :desc).limit(5).each do | article | %>
+        <div class="popular-post">
+          <a href="<%= article_path(article) %>" class="popular-img"><img src="<%= article.image %>" alt="">
+
+            <div class="p-overlay"></div>
+          </a>
+          <div class="p-content">
+            <%= link_to(article.title, article_path(article), class: "text-uppercase") %>
+            <span class="p-date"><%= article.created_at.strftime('Publicado %B %d, %Y') %></span>
+          </div>
+        </div>
+    <% end %>
+  </aside>
+  <aside class="widget pos-padding">
+    <h3 class="widget-title text-uppercase text-center">Articulos Recientes</h3>
+
+    <% Article.last(5).reverse.each do | article | %>
+      <div class="thumb-latest-posts">
+        <div class="media">
+
+
+          <div class="media-left">
+            <a href="<%= article_path(article) %>" class="popular-img"><img class="recent-image" src="<%= article.image %>" alt="">
+
+              <div class="p-overlay"></div>
+            </a>
+          </div>
+          <div class="p-content">
+            <%= link_to(article.title, article_path(article), class: "text-uppercase") %>
+            <span class="p-date"><%= article.created_at.strftime('Publicado %B %d, %Y') %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </aside>
+  <aside class="widget border pos-padding">
+    <h3 class="widget-title text-uppercase text-center">Categorias</h3>
+    <ul>
+      <% Category.all.each do | category | %>
+        <% if category.categories.count == 0 %>
+          <li>
+            <%= link_to(category.name, article_index_path(:category_id => category.id), class: 'category text-uppercase') %>
+            <span class="post-count pull-right"> (<%= category.articles.count %>)</span>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </aside>
+  <% unless Commontator::Comment.published.count == 0 %>
+    <aside class="widget pos-padding">
+      <h3 class="widget-title text-uppercase text-center">Comentarios Recientes</h3>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <% Commontator::Comment.published.last(5).reverse.each_with_index do | comment, index | %>
+              <div class="item <%= 'active' if index == 0 %>">
+                <div class="single-review">
+                  <div class="review-text">
+                    <a href="<%= article_path(comment.thread.commontable) %>" class="review-article-title p-coment"><%= comment.thread.commontable.title %></a>
+                    <p class="comment-preview"><%= comment.body %></p>
+                  </div>
+                  <div class="author-id">
+                    <% user = comment.creator.identities.first %>
+                    <img class="p-image img-circle" style="width: auto" src="<%= user.image %>" alt="">
+
+                    <div class="p-content author-text">
+                      <a href="#" class="text-uppercase"><%= user.name.nil? ? user.email : user.name %></a>
+                      <span style="line-height: 1.42857143" class="p-coment"><%= comment.created_at.strftime('%B %d, %Y') %></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </aside>
+  <% end %>
+  <aside class="widget">
+    <h3 class="widget-title text-uppercase text-center">Publicidad</h3>
+    <div class="body">
+      <img style="width: 100%" src="/assets/16.png"/>
+    </div>
+  </aside>
+</div>

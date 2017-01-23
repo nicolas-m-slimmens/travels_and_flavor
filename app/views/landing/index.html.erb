@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="owl-carousel owl-theme">
+          <% @last_articles.each_with_index do | article, index | %>
+            <div class="item">
+              <%= render 'article/preview', locals: {article: article} %>
+            </div>
+          <% end %>
+      </div>
+      <div id="articles">
+        <% @articles.each_with_index do | article, index | %>
+              <%= render 'article/preview', locals: {article: article} %>
+        <% end %>
+      </div>
+      <div id="infinite-scrolling">
+        <%= will_paginate @articles %>
+      </div>
+    </div>
+    <div class="col-md-4" data-sticky_column>
+      <%= render 'elements/widget_bar' %>
+    </div>
+  </div>
+</div>

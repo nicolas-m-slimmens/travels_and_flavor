@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <% if @articles.empty? %>
+            <div class="content-area padding-content widget">
+              <main class="site-main" role="main">
+
+                <section class=text-center">
+
+                  <p class="lead">Lo lamentamos, pero aún no hay articulos en esta categoria...</p>
+
+                  <div class="row">
+                      <p class="go-back-home"><%= link_to('Volver', :back) %></p>
+                  </div>
+
+                </section>
+
+              </main>
+            </div>
+      <% else %>
+        <% @articles.each do | article | %>
+            <%= render 'article/preview', locals: {article: article} %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-4" data-sticky_column>
+      <%= render 'elements/widget_bar' %>
+    </div>
+  </div>
+</div>

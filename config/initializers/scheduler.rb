@@ -1,0 +1,1 @@
+NewsLetterInteractor.schedule!

@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="widget widget-wide">
+        <header>
+          <h3 class="text-uppercase">Categorias</h3>
+          <a href="<%= new_category_path %>" class="btn btn-success btn-create"><i class="fa fa-plus"></i> Crear</a>
+        </header>
+        <table id="datatable-table" class="table table-striped table-hover fat-table">
+          <thead>
+          <tr>
+            <th class="no-sort" style="width: 70px">
+              <div class="checkbox">
+                <input id="checkbox-all-categories" type="checkbox" data-check-all="">
+                <label for="checkbox-all-categories"></label>
+              </div>
+            </th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th class="hidden-xs">Descripción</th>
+            <th class="hidden-xs">Creación</th>
+            <th class="hidden-xs">Actualización</th>
+            <th class="no-sort" colspan="1"/>
+            <th class="no-sort" colspan="1"/>
+            <th class="no-sort" colspan="1"/>
+          </tr>
+          </thead>
+          <tbody>
+          <% @categories.each do | category | %>
+              <tr>
+                <th>
+                  <div class="checkbox">
+                    <input id="checkbox-category-<%= category.id %>" type="checkbox">
+                    <label for="checkbox-category-<%= category.id %>"></label>
+                  </div>
+                </th>
+                <td><%= category.id %></td>
+                <td><span class="fw-semi-bold"><%= category.name %></span></td>
+                <td class="hidden-xs"><small><%= category.description.nil? ? '-' : category.description %></small></td>
+                <td class="hidden-xs"><%= category.created_at %></td>
+                <td class="hidden-xs"><%= category.updated_at %></td>
+                <td class="action-column"><%= link_to raw('<i class="fa fa-search"></i>'), category_path(category) %></td>
+                <td class="action-column"><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_category_path(category) %></td>
+                <td class="action-column"><%= link_to raw('<i class="fa fa-trash"></i>'), category_path(category),
+                                                      method: :delete,
+                                                      data: { confirm: "¿Estas seguro de que queres eliminar la categoria '#{category.name}'?" } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>

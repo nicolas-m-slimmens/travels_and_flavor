@@ -1,18 +1,79 @@
 <!DOCTYPE html>
-<html>
+<!--<html>
 <head>
   <title>TravelsAndFlavor</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Prelang: Analytics / Google Analytics -->
-    <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
-<body>
-<%= render partial: "elements/navbar" %>
-<%= bootstrap_flash %>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>&lt;!&ndash; Prelang: Analytics / Google Analytics &ndash;&gt;
+    <%= analytics_init if Rails.env.production? or Rails.env.development? %>
+</head>
 
+<% if defined?(Devise) && user_signed_in? %>
+    <section id="main">
 
-<%= yield %>
+      <%= yield %>
+
+    </section>
+
+    <footer id="footer">
+      Copyright &copy; 2016 Travels and Flavor
+
+      <ul class="f-menu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Support</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </footer>
+<% else %>
+    <%= yield %>
+<% end %>
 
 </body>
+</html>-->
+
+
+<html>
+  <head>
+    <title>Aroma a Viaje</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Prelang: Analytics / Google Analytics -->
+    <meta charset="utf-8">
+    <%= analytics_init if Rails.env.production? or Rails.env.development? %>
+  </head>
+  <body>
+
+  <div class="wrap">
+    <header class="header-bg text-center">
+
+      <div class="logo2">
+        <a href="<%= root_path %>"><img class="logo-img" src="/assets/plane-logo.png" alt=""></a>
+      </div>
+
+    </header>
+
+    <%= render 'elements/navigation_bar' %>
+
+    <%= bootstrap_flash %>
+
+    <div class="main-content">
+      <%= yield %>
+    </div>
+    <div class="footer-copy">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-center">© 2017 <a href="">Sabor a Viaje</a>, Desarrollado por <a href="#">NMS</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= javascript_include_tag 'application' %>
+  </body>
 </html>
+
+
+

@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+
+      <article class="post">
+        <div class="post-content">
+          <header class="entry-header text-center text-uppercase">
+
+
+            <h1 class="entry-title"><%= link_to(@article.title, article_path(@article)) %></h1>
+
+            <h6><a href="#"> <%= @article.tags.gsub(',', ' · ') unless @article.tags.nil? %></a></h6>
+
+
+          </header>
+          </hr>
+          <div class="entry-content">
+            <%= raw(@article.body) %>
+          </div>
+          <div class="decoration">
+            <div class="input-group vote-group">
+              <span class="input-group-btn">
+                  <button id="vote-down" data-article="<%= @article.id %>" class="btn btn-warning" <%= 'disabled' unless defined?(Devise) && user_signed_in? && !current_user.voted_down_on?(@article) %> type="button"><i class="fa fa-thumbs-down"></i></button>
+              </span>
+              <input id="votes" class="form-control input-transparent" style="text-align: center" value="<%= @article.get_upvotes.size - @article.get_downvotes.size %>">
+              <span class="input-group-btn">
+                  <button id="vote-up" data-article="<%= @article.id %>" class="btn btn-warning" <%= 'disabled' unless defined?(Devise) && user_signed_in? && !current_user.voted_up_on?(@article) %> type="button"><i class="fa fa-thumbs-up"></i></button>
+              </span>
+            </div>
+            <%= link_to('Volver', :back, class: 'btn btn-default') %>
+          </div>
+
+          <div class="social-share">
+            <span class="social-share-title pull-left text-capitalize"><%= @article.created_at.strftime('Publicado %B %d, %Y') %></span>
+            <ul class="text-center pull-right">
+              <li><a class="s-facebook" href=""><i class="fa fa-facebook"></i></a></li>
+              <li><a class="s-twitter" href=""><i class="fa fa-twitter"></i></a></li>
+              <li><a class="s-google-plus" href=""><i class="fa fa-google-plus"></i></a></li>
+              <li><a class="s-linkedin" href=""><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="s-instagram" href=""><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <%= commontator_thread(@article) %>
+
+      <div class="row">
+        <% unless @article.previous.nil? %>
+            <div class="col-md-6 left-box">
+              <div class="single-blog-box">
+                <a href="<%= article_path(@article.previous) %>">
+                  <img class="single-blog-image" src="<%= @article.previous.image %>" alt="">
+
+                  <div class="overlay">
+
+                    <div class="promo-text">
+                      <p><i class=" pull-left fa fa-angle-left"></i></p>
+                      <h5><%= @article.previous.title %></h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+        <% end %>
+
+        <% unless @article.next.nil? %>
+            <div class="col-md-6 right-box">
+              <div class="single-blog-box">
+                <a href="<%= article_path(@article.next) %>">
+                  <img class="single-blog-image" src="<%= @article.next.image %>" alt="">
+
+                  <div class="overlay">
+
+                    <div class="promo-text">
+                      <p><i class=" pull-right fa fa-angle-right"></i></p>
+                      <h5><%= @article.next.title %></h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <%= render 'elements/widget_bar' %>
+    </div>
+  </div>
+</div>

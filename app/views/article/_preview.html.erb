@@ -1,0 +1,46 @@
+<article class="post">
+  <div class="post-thumb">
+    <a class="preview-header" href="<%= article_path(locals[:article]) %>"><img class="single-blog-image" src="<%= locals[:article].image %>" alt=""></a>
+
+    <a href="<%= article_path(locals[:article]) %>" class="post-thumb-overlay text-center">
+      <div class="text-uppercase text-center">Ver Articulo</div>
+    </a>
+  </div>
+  <div class="post-content">
+    <header class="entry-header text-center text-uppercase">
+
+      <h1 class="entry-title"><%= link_to(locals[:article].title, article_path(locals[:article])) %></h1>
+
+      <h6><a href="#"> <%= locals[:article].tags.gsub(',', ' · ') unless locals[:article].tags.nil? %></a></h6>
+
+    </header>
+    <div class="entry-content">
+      <% if locals[:article].description.nil? || locals[:article].description.empty? %>
+        <%= raw(locals[:article].body) %>
+      <% else %>
+        <p class="article-preview" ><%= locals[:article].description %></p>
+      <% end %>
+
+      <div class="btn-continue-reading text-center text-uppercase">
+        <%= link_to('Continuar Leyendo', article_path(locals[:article]), class: "more-link") %>
+        <% if can? :manage, locals[:article] %>
+          <%= link_to('Editar Articulo', edit_article_path(locals[:article]), class: "more-link") %>
+          <%= link_to 'Eliminar Articulo', article_path(locals[:article]), class: "more-link",
+                      method: :delete,
+                      data: { confirm: "¿Estas seguro de que queres eliminar la categoria '#{locals[:article].title}'?" } %>
+        <% end %>
+      </div>
+
+    </div>
+    <div class="social-share">
+      <span class="social-share-title pull-left text-capitalize"><%= locals[:article].created_at.strftime('Publicado %B %d, %Y') %></span>
+      <ul class="text-center pull-right">
+        <li><a class="s-facebook" href=""><i class="fa fa-facebook"></i></a></li>
+        <li><a class="s-twitter" href=""><i class="fa fa-twitter"></i></a></li>
+        <li><a class="s-google-plus" href=""><i class="fa fa-google-plus"></i></a></li>
+        <li><a class="s-linkedin" href=""><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="s-instagram" href=""><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</article>
