@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
 
   scope :to_send, -> { where(send_news: false) }
 
+  scope :published, -> { where('published IS TRUE AND (available_from IS NULL OR available_from < now())') }
+
   acts_as_votable
 
   acts_as_commontable

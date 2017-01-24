@@ -30,7 +30,7 @@
   <aside class="widget">
     <h3 class="widget-title text-uppercase text-center">Articulos Populares</h3>
 
-    <% Article.order(:cached_weighted_average => :desc).limit(5).each do | article | %>
+    <% Article.published.order(:cached_weighted_average => :desc).limit(5).each do | article | %>
         <div class="popular-post">
           <a href="<%= article_path(article) %>" class="popular-img"><img src="<%= article.image %>" alt="">
 
@@ -46,7 +46,7 @@
   <aside class="widget pos-padding">
     <h3 class="widget-title text-uppercase text-center">Articulos Recientes</h3>
 
-    <% Article.last(5).reverse.each do | article | %>
+    <% Article.published.last(5).reverse.each do | article | %>
       <div class="thumb-latest-posts">
         <div class="media">
 

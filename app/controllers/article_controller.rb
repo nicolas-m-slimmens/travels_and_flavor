@@ -6,9 +6,9 @@ class ArticleController < ApplicationController
 
   def index
     if params[:category_id].nil?
-      @articles = Article.all
+      @articles = Article.published
     else
-      @articles = Article.where(category_id: params[:category_id])
+      @articles = Article.published.where(category_id: params[:category_id])
     end
 
   end

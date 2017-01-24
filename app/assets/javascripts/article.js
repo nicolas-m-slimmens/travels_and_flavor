@@ -39,7 +39,9 @@ $(function(){
     });
 
     function pageLoad(){
-        $('.date-picker').datetimepicker();
+        $('.date-picker').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm'
+        });
 
         $('.selectpicker').selectpicker({
             format: false
