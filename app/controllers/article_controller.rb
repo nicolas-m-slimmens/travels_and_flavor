@@ -28,6 +28,8 @@ class ArticleController < ApplicationController
       redirect_to article_path(@article)
     else
       flash[:alert] = 'Error al crear nueva articulo'
+      puts @article.errors.full_messages
+      puts @article.errors.inspect
       render :new
     end
   end
