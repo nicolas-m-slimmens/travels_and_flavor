@@ -51,6 +51,7 @@ $(function(){
             $(this).select2($(this).data());
         });
         $(".select-block-level").select2({
+            placeholder: 'Escriba o seleccione un tag y presione "Enter" para agregar',
             tags: ['photoshop', 'colors', 'plugins', 'themes', 'bike']
         });
 

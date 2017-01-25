@@ -1504,6 +1504,16 @@ table th[class*="col-"] {
     margin: 1px;
 }
 
+.select2-container {
+    width: 100%;
+}
+
+.select2-choices {
+    border: none;
+    color: #444;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
 /*===========
 blog css
 =============*/
@@ -3926,8 +3936,8 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
  * Make Multi Select2's choices match Bootstrap 3's default button styles.
  */
 .select2-container-multi .select2-choices .select2-search-choice {
-    color: #555;
-    background: #666;
+    color: #333333;
+    background: #fff;
     border-color: rgba(0, 0, 0, 0.15);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     -webkit-box-shadow: none;
