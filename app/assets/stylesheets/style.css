@@ -82,9 +82,22 @@ ul {
     float: left;
 }
 
+.media-left img {
+    max-height: 35px;
+}
+
 .wrap {
     min-height:100%;
     position: relative;
+}
+
+.comment_form_field {
+    padding-top: 55px;
+}
+
+.comment_form_field textarea{
+    resize: vertical;
+    padding: 10px;
 }
 
 /*-------------------

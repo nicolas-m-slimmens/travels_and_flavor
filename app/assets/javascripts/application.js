@@ -18,7 +18,6 @@
 //= require widgster
 //= require app
 //= require settings
-//= require bootstrap-select.min
 //= require jquery.dataTables.min
 //= require fontawesome-iconpicker.min
 //= require select2.min

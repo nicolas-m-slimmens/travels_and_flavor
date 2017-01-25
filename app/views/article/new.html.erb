@@ -26,25 +26,21 @@
               </div>
             </div>
           </fieldset>
-
-
-
           <fieldset>
             <legend class="form-legend">
               <i class="fa fa-square-o"></i> Parametros <strong>opcionales</strong> para crear un nuevo articulo.
             </legend>
-
             <div class="form-group">
               <label for="description" class="col-sm-3 control-label">Descripción</label>
               <div class="col-sm-9">
-                <%= f.text_area :description, class: "form-control input-transparent" %>
+                <%= f.text_area :description, class: "form-control input-transparent", style: 'resize: vertical' %>
                 <span class="help-block">Resumen opcional que se puede usar en las vistas anticipadas del articulo</span>
               </div>
             </div>
             <div class="form-group">
               <label for="description" class="col-sm-3 control-label">Imagen</label>
               <div class="col-sm-9">
-                <%= f.select :image, options_for_select(Ckeditor::Picture.all.collect { | picture | [picture.data_file_name, "/ckeditor_assets/pictures/#{picture.id}/content_#{picture.data_file_name}"]}), {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
+                <%= f.select :image, options_for_select(Ckeditor::Picture.all.map { | picture | [picture.data_file_name, picture.url_content, {'data-thumbnail' =>  picture.url_thumb}]}), {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
               </div>
             </div>
           </fieldset>
