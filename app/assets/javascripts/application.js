@@ -56,14 +56,13 @@ $(document).ready(function() {
     })
 });
 
-// Initialize Share-Buttons
-$.contactButtons({
-    effect  : 'slide-on-scroll',
-    buttons : {
-        'facebook':   { class: 'facebook',  use: false, icon: 'facebook',    link: '', title: 'Seguinos en Facebook' },
-        'google':     { class: 'gplus',     use: false, icon: 'google-plus', link: '', title: 'Seguinos en Google Plus' },
-        'twitter':    { class: 'twitter',   use: false, icon: 'twitter',     link: '', title: 'Seguinos en Twitter' },
-        'pinterest':  { class: 'pinterest', use: false, icon: 'pinterest',   link: '', title: 'Seguinos en Pinterest' },
-        'instagram':  { class: 'instagram', use: false, icon: 'instagram',   link: '', title: 'Seguinos en Instagram' }
-    }
+$(function() {
+    $.contactButtons({
+        effect  : 'slide-on-scroll',
+        buttons : {
+            'facebook':   { class: 'facebook',  use: false, icon: 'facebook',    link: '', title: 'Seguinos en Facebook' },
+            'google':     { class: 'gplus',     use: false, icon: 'google-plus', link: '', title: 'Seguinos en Google Plus' },
+            'twitter':    { class: 'twitter',   use: false, icon: 'twitter',     link: '', title: 'Seguinos en Twitter' }
+        }
+    });
 });
