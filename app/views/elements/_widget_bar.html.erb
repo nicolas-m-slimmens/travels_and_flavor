@@ -13,7 +13,7 @@
         <%= link_to('Salir', destroy_user_session_path, :method => :delete, class: 'text-uppercase text-center btn btn-signout') %>
     <% else %>
         <%= link_to('Ingresar', new_user_session_path, class: 'text-uppercase text-center btn btn-login')  %>
-        <%= link_to('Registrarse', new_user_registration_path, :method => :delete, class: 'text-uppercase text-center btn btn-signout') %>
+        <%= link_to('Registrarse', new_user_registration_path, class: 'text-uppercase text-center btn btn-signout') %>
     <% end %>
 
   </aside>
