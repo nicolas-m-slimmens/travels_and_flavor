@@ -42,6 +42,13 @@
     <meta charset="utf-8">
     <%= analytics_init if Rails.env.production? or Rails.env.development? %>
   </head>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-1661710521240088",
+      enable_page_level_ads: true
+    });
+  </script>
   <body>
 
   <div class="wrap">
@@ -64,7 +71,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="text-center">© 2017 <a href="">Sabor a Viaje</a>, Desarrollado por <a href="#">NMS</a>
+            <div class="text-center">© 2017 <a href="">Tiempo de Viajar</a>, Desarrollado por <a href="#">NMS</a>
             </div>
           </div>
         </div>
@@ -72,13 +79,6 @@
     </div>
   </div>
   <%= javascript_include_tag 'application' %>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-1661710521240088",
-      enable_page_level_ads: true
-    });
-  </script>
   </body>
 </html>
 
