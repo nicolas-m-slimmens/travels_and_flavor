@@ -78,7 +78,7 @@
         <% if category.categories.count == 0 %>
           <li>
             <%= link_to(category.name, article_index_path(:category_id => category.id), class: 'category text-uppercase') %>
-            <span class="post-count pull-right"> (<%= category.articles.count %>)</span>
+            <span class="post-count pull-right"> (<%= category.articles.published.count %>)</span>
           </li>
         <% end %>
       <% end %>

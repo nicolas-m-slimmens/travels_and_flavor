@@ -1,4 +1,7 @@
 <article class="post">
+  <% unless locals[:article].is_published? %>
+    <div class="text-uppercase corner-ribbon top-right red">No Publicado</div>
+  <% end %>
   <div class="post-thumb">
     <a class="preview-header" href="<%= article_path(locals[:article]) %>"><img class="single-blog-image" src="<%= locals[:article].image %>" alt=""></a>
 

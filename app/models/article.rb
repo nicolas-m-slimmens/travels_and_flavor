@@ -18,4 +18,8 @@ class Article < ActiveRecord::Base
     self.class.where('id < ?', id).last
   end
 
+  def is_published?
+    self.published && (self.available_from.nil? || self.available_from < Time.now)
+  end
+
 end

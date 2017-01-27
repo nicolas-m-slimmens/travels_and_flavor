@@ -5,16 +5,23 @@ class ArticleController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:category_id].nil?
-      @articles = Article.published
+    if can? :manage, Article
+      @articles = Article.all
     else
-      @articles = Article.published.where(category_id: params[:category_id])
+      @articles = Article.published
     end
 
+    unless params[:category_id].nil?
+      @articles = @articles.where(category_id: params[:category_id])
+    end
   end
 
   def show
-
+    unless @article.is_published?
+      unless can? :manage, Article
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    end
   end
 
   def new

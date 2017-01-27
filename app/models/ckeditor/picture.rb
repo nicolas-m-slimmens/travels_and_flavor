@@ -1,4 +1,5 @@
 class Ckeditor::Picture < Ckeditor::Asset
+
   has_attached_file :data,
                     :processors => [:watermark],
                     :url  => "/ckeditor_assets/pictures/:id/:style_:basename.:extension",
@@ -9,7 +10,7 @@ class Ckeditor::Picture < Ckeditor::Asset
                             :geometry => '900>',
                             :watermark_path => "#{Rails.root}/public/images/watermark.png",
                             :position => 'Center'
-                        },
+                        }
                     }
 
   validates_attachment_presence :data
