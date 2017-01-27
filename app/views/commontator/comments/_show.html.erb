@@ -10,7 +10,11 @@
 <div class="bottom-comment">
   <div class="main-comment">
     <div class="comment-img">
-      <img class="img-circle" src="<%= comment.creator.identities.first.image %>" alt="">
+      <% if comment.creator.identities.empty? %>
+          <i style="height: 70px; width: 70px; font-size: 55px !important;" class="fa fa-user img-me"></i>
+      <% else %>
+          <img style="border: 5px solid #fff;" class="img-circle" src="<%= comment.creator.identities.first.image %>" alt="">
+      <% end %>
     </div>
 
     <div class="comment-text">

@@ -12,7 +12,7 @@
   position: fixed;
   z-index: 100;
   border-top: 0;
-  top: 220px;
+  top: 250px;
   left: -50px;
   width: 50px;
 }
@@ -22,19 +22,27 @@
   position: absolute;
 }
 
+.contact-button-link:link {
+    text-decoration: none !important;
+}
+
 .contact-button-link  {
   display: block;
   width: 50px;
   height: 50px;
   padding: 0;
   margin-bottom: 1px;
-  text-align: center;
   line-height: 50px;
   font-size: 22px;
   background: #8e8e93;
   color: #fff;
   position: relative;
   left: 0;
+  text-align: right;
+  padding-right: 15px;
+  overflow: hidden;
+  direction: rtl;
+  text-decoration: none;
   
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -48,8 +56,7 @@
 .contact-button-link:focus,
 .contact-button-link:active {
   color: #fff;
-  padding-left: 20px;
-  width: 70px;
+  width: 200px;
 }
 .contact-button-link.cb-hidden {
   left: -50px;
@@ -77,15 +84,15 @@
 .contact-button-link.show-hide-contact-bar:focus,
 .contact-button-link.show-hide-contact-bar:active {
   background: transparent;
-  color: #000;
+  color: #fff;
   border: 0;
   outline: 0;
-  padding: 0;
+  padding-right: 20px;
   width: 50px;
 }
 .contact-button-link.show-hide-contact-bar:hover {
   color: #000;
-  background: #ccc;
-  padding: 0;
+  background: rgba(50,50,50,0.3);
+  padding-right: 20px;
   width: 50px;
 }

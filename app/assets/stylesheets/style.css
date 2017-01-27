@@ -592,6 +592,11 @@ about me
 .img-me {
     border: 5px solid #fff;
     border-radius: 50%;
+    font-size: 60px !important;
+    height: 75px;
+    width: 75px;
+    color: rgb(255, 255, 255);
+    text-align: center;
 }
 
 .social-share {
@@ -1151,6 +1156,7 @@ athuor
 
 .recent-image {
     height: 65px;
+    width: 65px !important;
 }
 
 thead {

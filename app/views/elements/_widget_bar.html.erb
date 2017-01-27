@@ -4,10 +4,16 @@
         <div class="about-me-img">
 
           <div class="about-me-content text-center">
-            <img src="<%= current_user.identities.first.image %>" alt="" class="img-me">
+            <% if current_user.identities.empty? %>
+                <i class="fa fa-user img-me"></i>
 
-            <h3 class="text-uppercase"><%= current_user.identities.first.name.nil? ? current_user.identities.first.email : current_user.identities.first.name.capitalize %></h3>
+                <h3 class="text-uppercase"><%= current_user.name.nil? ? current_user.email.split('@').first : current_user.name %></h3>
+            <% else %>
+              <% identity = current_user.identities.first %>
+              <img src="<%= identity.image %>" alt="" class="img-me">
 
+              <h3 class="text-uppercase"><%= identity.name.nil? ? identity.email.split('@').first : identity.name %></h3>
+            <% end %>
           </div>
         </div>
         <%= link_to('Salir', destroy_user_session_path, :method => :delete, class: 'text-uppercase text-center btn btn-signout') %>
@@ -91,13 +97,22 @@
                     <p class="comment-preview"><%= comment.body %></p>
                   </div>
                   <div class="author-id">
-                    <% user = comment.creator.identities.first %>
-                    <img class="p-image img-circle" style="width: auto" src="<%= user.image %>" alt="">
+                    <% if comment.creator.identities.empty? %>
+                        <i style="height: 50px; width: 50px; font-size: 45px !important;" class="fa fa-user img-me"></i>
+                        <div class="p-content author-text">
+                          <a href="#" class="text-uppercase"><%= comment.creator.name.nil? ? comment.creator.email : comment.creator.name %></a>
+                          <span style="line-height: 1.42857143" class="p-coment"><%= comment.created_at.strftime('%B %d, %Y') %></span>
+                        </div>
+                    <% else %>
+                        <% user = comment.creator.identities.first %>
+                        <img style="border: 5px solid #fff;" class="p-image img-circle" style="width: auto" src="<%= user.image %>" alt="">
+                        <div class="p-content author-text">
+                          <a href="#" class="text-uppercase"><%= user.name.nil? ? user.email : user.name %></a>
+                          <span style="line-height: 1.42857143" class="p-coment"><%= comment.created_at.strftime('%B %d, %Y') %></span>
+                        </div>
+                    <% end %>
 
-                    <div class="p-content author-text">
-                      <a href="#" class="text-uppercase"><%= user.name.nil? ? user.email : user.name %></a>
-                      <span style="line-height: 1.42857143" class="p-coment"><%= comment.created_at.strftime('%B %d, %Y') %></span>
-                    </div>
+
                   </div>
                 </div>
               </div>

@@ -73,12 +73,12 @@
           }
           
           // Insert the links
-          var sIcon = '<i class="fa fa-' + bs.icon + '"></i>',
+          var sIcon = '<i  style="padding-left: 20px" class="fa fa-' + bs.icon + '"></i>',
               sButton = '<a href="' + sLink + 
-                          '" class="contact-button-link cb-anchor ' + bs.class + '" ' +
+                          '" class="contact-button-link cb-anchor text-uppercase ' + bs.class + '" ' +
                           (bs.title ? 'title="' + bs.title + '"' : '') + 
                           (bs.extras ? bs.extras : '') + 
-                          '>' + sIcon + '</a>';
+                          '>' + sIcon + i + '</a>';
           oContainer.append(sButton);
         }
       }

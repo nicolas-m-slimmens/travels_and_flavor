@@ -59,8 +59,8 @@ $(document).ready(function() {
 $(function() {
     $.contactButtons({
         buttons : {
-            'facebook':   { class: 'facebook',  use: false, icon: 'facebook',    link: '', title: 'Seguinos en Facebook' },
-            'google':     { class: 'gplus',     use: false, icon: 'google-plus', link: '', title: 'Seguinos en Google Plus' },
+            'facebook':   { class: 'facebook',  use: true, icon: 'facebook',    link: '', title: 'Seguinos en Facebook' },
+            'google':     { class: 'gplus',     use: true, icon: 'google-plus', link: '', title: 'Seguinos en Google Plus' },
             'twitter':    { class: 'twitter',   use: true, icon: 'twitter',     link: 'https://twitter.com/tiempo_viajar', title: 'Seguinos en Twitter' },
             'instagram':    { class: 'instagram',   use: true, icon: 'instagram',     link: 'https://www.instagram.com/tiempo_viajar/', title: 'Seguinos en Instagram' }
         }

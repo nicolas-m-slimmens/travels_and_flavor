@@ -8,7 +8,6 @@ class Ability
 
     if !user.nil? && user.role == 'user'
       can :read, Article
-      can [:create, :update], Coment
     end
 
     if user.nil? || user.role.nil?
