@@ -40,7 +40,7 @@
                 <div class="form-group">
                   <label for="description" class="col-sm-3 control-label">Imagen</label>
                   <div class="col-sm-9">
-                    <%= f.select :image, options_for_select(Ckeditor::Picture.all.map { | picture | [picture.data_file_name, picture.url_content, {'data-thumbnail' =>  picture.url_thumb}]}), {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
+                    <%= f.select :image, Ckeditor::Picture.all.map { | picture | [picture.data_file_name, picture.url_content, {'data-thumbnail' =>  picture.url_thumb}]}, {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
                   </div>
                 </div>
               </fieldset>
@@ -65,7 +65,7 @@
                   <div class="form-group">
                     <label for="article-status" class="control-label col-sm-3">Estado</label>
                     <div class="col-sm-3">
-                      <%= f.select :published, options_for_select([['Borrador', 0], ['Publicado', 1]]), {}, { class: "selectpicker", 'data-style' => 'btn-success'} %>
+                      <%= f.select :published, [['Borrador', false], ['Publicado', true]], {}, { class: "selectpicker", 'data-style' => 'btn-success'} %>
                     </div>
                     <label for="publish-date" class="control-label col-sm-3">Programar para</label>
                     <div class="col-sm-3">
@@ -78,7 +78,7 @@
                   <div class="form-group">
                     <label for="article-category" class="control-label col-sm-3">Categoria</label>
                     <div class="col-sm-3">
-                      <%= f.select :category_id, options_for_select(Category.all.collect { | category | [category.name, category.id]}), {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
+                      <%= f.select :category_id, Category.all.collect { | category | [category.name, category.id]}, {}, { class: "selectpicker", 'data-live-search' => 'true', 'data-style' => 'btn-warning'} %>
                     </div>
                     <label for="article-tags" class="control-label col-sm-3">Tags</label>
                     <div class="col-sm-3">
