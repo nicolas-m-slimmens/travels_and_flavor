@@ -10,7 +10,9 @@
  
  #contact-buttons-bar {
   position: fixed;
-  top: 120px;
+  z-index: 100;
+  border-top: 0;
+  top: 220px;
   left: -50px;
   width: 50px;
 }
@@ -61,7 +63,12 @@
 .contact-button-link.gplus {
   background: #db4437;
 }
-
+.contact-button-link.twitter {
+    background: #55acee;
+}
+.contact-button-link.instagram {
+    background: #125688;
+}
 .contact-button-link.separated {
   margin-top: 1em;
 }

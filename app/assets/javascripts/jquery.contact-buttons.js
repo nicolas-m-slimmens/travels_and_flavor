@@ -53,7 +53,7 @@
       oContainer.addClass(settings.effect);
       
       // Add show/hide button
-      var sShowHideBtn = '<button class="contact-button-link show-hide-contact-bar"><span class="fa fa-angle-left"></span></button>';
+      var sShowHideBtn = '<button class="contact-button-link show-hide-contact-bar"><i class="fa fa-angle-left"></i></button>';
       oContainer.append(sShowHideBtn);
       
       var i;
@@ -73,9 +73,9 @@
           }
           
           // Insert the links
-          var sIcon = '<span class="fa fa-' + bs.icon + '"></span>',
+          var sIcon = '<i class="fa fa-' + bs.icon + '"></i>',
               sButton = '<a href="' + sLink + 
-                          '" class="contact-button-link cb-ancor ' + bs.class + '" ' + 
+                          '" class="contact-button-link cb-anchor ' + bs.class + '" ' +
                           (bs.title ? 'title="' + bs.title + '"' : '') + 
                           (bs.extras ? bs.extras : '') + 
                           '>' + sIcon + '</a>';
@@ -93,7 +93,7 @@
         e.preventDefault();
         e.stopImmediatePropagation();
         $('.show-hide-contact-bar').find('.fa').toggleClass('fa-angle-right fa-angle-left');
-        oContainer.find('.cb-ancor').toggleClass('cb-hidden');
+        oContainer.find('.cb-anchor').toggleClass('cb-hidden');
       });
     }
   };
