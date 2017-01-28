@@ -98,14 +98,14 @@
                   </div>
                   <div class="author-id">
                     <% if comment.creator.identities.empty? %>
-                        <i style="height: 50px; width: 50px; font-size: 45px !important;" class="fa fa-user img-me"></i>
+                        <i class="fa fa-user img-me"></i>
                         <div class="p-content author-text">
                           <a href="#" class="text-uppercase"><%= comment.creator.name.nil? ? comment.creator.email : comment.creator.name %></a>
                           <span style="line-height: 1.42857143" class="p-coment"><%= comment.created_at.strftime('%B %d, %Y') %></span>
                         </div>
                     <% else %>
                         <% user = comment.creator.identities.first %>
-                        <img style="border: 5px solid #fff;" class="p-image img-circle" style="width: auto" src="<%= user.image %>" alt="">
+                        <img style="border: 5px solid #fff; max-width: 50px !important;" class="p-image img-circle" style="width: auto" src="<%= user.image %>" alt="">
                         <div class="p-content author-text">
                           <a href="#" class="text-uppercase"><%= user.name.nil? ? user.email : user.name %></a>
                           <span style="line-height: 1.42857143" class="p-coment"><%= comment.created_at.strftime('%B %d, %Y') %></span>
@@ -121,4 +121,13 @@
       </div>
     </aside>
   <% end %>
+  <aside class="widget">
+    <h3 class="widget-title text-uppercase text-center">Acerca de...</h3>
+
+    <p>Este es un espacio para compartir una de mis grandes pasiones: <b>viajar</b>...
+      <br>
+      Y como de interactuar se trata, me encantaría leerte y que me cuentes tus vivencias.
+      <br>
+      Te espero, porque siempre es tiempo de viajar, aunque más no sea en nuestros sueños!</p>
+  </aside>
 </div>

@@ -594,7 +594,7 @@ about me
 .img-me {
     border: 5px solid #fff;
     border-radius: 50%;
-    font-size: 60px !important;
+    font-size: 70px !important;
     height: 75px;
     width: 75px !important;
     color: rgb(255, 255, 255);
@@ -1091,6 +1091,17 @@ athuor
 .author-id img {
     float: left;
     overflow: hidden;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.author-id i {
+    height: 50px;
+    width: 50px;
+    font-size: 45px !important;
+    max-width: 50px !important;
+    float: left;
     margin-left: 15px;
     margin-top: 5px;
     margin-right: 10px;

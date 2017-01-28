@@ -38,6 +38,14 @@ $(function(){
         });
     });
 
+    $('.thread_show_link').on('click', function(e) {
+        e.preventDefault();
+    });
+
+    $('.thread_hide_link').on('click', function(e) {
+        e.preventDefault();
+    });
+
     function pageLoad(){
         $('.date-picker').datetimepicker({
             format: 'DD/MM/YYYY HH:mm'

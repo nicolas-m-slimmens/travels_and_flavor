@@ -3,26 +3,30 @@
    # user
 %>
 
-<% creator = comment.creator
-   name = Commontator.commontator_name(creator) || ''
-%>
+<% creator = comment.creator %>
 
 <div class="bottom-comment">
   <div class="main-comment">
     <div class="comment-img">
-      <% if comment.creator.identities.empty? %>
+      <% if creator.identities.empty? %>
           <i style="height: 70px; width: 70px; font-size: 55px !important;" class="fa fa-user img-me"></i>
       <% else %>
-          <img style="border: 5px solid #fff;" class="img-circle" src="<%= comment.creator.identities.first.image %>" alt="">
+          <img style="border: 5px solid #fff;" class="img-circle" src="<%= creator.identities.first.image %>" alt="">
       <% end %>
     </div>
 
     <div class="comment-text">
+      <span id="comment_<%= comment.id.to_s %>_votes_span">
       <%= render :partial => 'commontator/comments/votes',
                  :locals => { :comment => comment,
                               :user => user } %>
-      <h5><%= name %></h5>
+      </span>
 
+      <% if creator.identities.empty? %>
+        <h5><%= creator.name.nil? ? creator.email : creator.name %></h5>
+      <% else %>
+        <h5><%= creator.identities.first.name.nil? ? creator.identities.first.email : creator.identities.first.name %></h5>
+      <% end %>
       <p class="comment-date">
         <%= comment.created_timestamp %>
       </p>
