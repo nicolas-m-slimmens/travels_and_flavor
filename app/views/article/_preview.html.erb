@@ -38,27 +38,27 @@
     <div class="social-share">
       <span class="social-share-title pull-left text-capitalize"><%= locals[:article].available_from.blank? ? locals[:article].created_at.strftime('Publicado %B %d, %Y') : locals[:article].available_from.strftime('Publicado %B %d, %Y') %></span>
       <ul class="text-center pull-right">
-        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>">
+        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>" data-url="<%= article_url(locals[:article]) %>">
           <a class="s-mail" href="#" data-site="email" onclick="return SocialShareButton.share(this);">
             <i class="fa fa-envelope"></i>
           </a>
         </li>
-        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>">
+        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>" data-url="<%= article_url(locals[:article]) %>">
           <a class="s-facebook" href="#" data-site="facebook" onclick="return SocialShareButton.share(this);">
             <i class="fa fa-facebook"></i>
           </a>
         </li>
-        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>">
+        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>" data-url="<%= article_url(locals[:article]) %>">
           <a class="s-twitter" href="#" data-site="twitter" onclick="return SocialShareButton.share(this);">
             <i class="fa fa-twitter"></i>
           </a>
         </li>
-        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>">
+        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>" data-url="<%= article_url(locals[:article]) %>">
           <a class="s-google-plus" href="#" data-site="google_plus" onclick="return SocialShareButton.share(this);">
             <i class="fa fa-google-plus"></i>
           </a>
         </li>
-        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>">
+        <li data-title="<%= locals[:article].title %>" data-img="<%= locals[:article].image %>" data-desc="<%= locals[:article].description %>" data-url="<%= article_url(locals[:article]) %>">
           <a class="s-instagram" href="#" data-site="instagram" onclick="return SocialShareButton.share(this);">
             <i class="fa fa-instagram"></i>
           </a>
