@@ -27,6 +27,7 @@
 //= require owl.carousel.min
 //= require commontator/application
 //= require jquery.contact-buttons
+//= require social-share-button
 //= require_tree .
 
 $(function() {

@@ -63,6 +63,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'cancan'
 gem 'commontator'
+gem 'social-share-button'
 
 group :development do
   gem 'better_errors'
