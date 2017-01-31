@@ -72,16 +72,16 @@ $(function(){
         });
     });
 
-    CKEDITOR.on("instanceReady", function(event)
-    {
-        $('.cke_button__maximize').on('click', function() {
-            if ($('.cke_maximized').size() === 1) {
-                $('.cke_top').css('background', '#fff');
-            } else {
-                $('.cke_top').css('background', 'none');
-            }
-        });
+    $(document).on('click','.cke_button__maximize', function() {
+        if ($('.cke_maximized').size() === 1) {
+            $('.cke_top').css('background', '#fff');
+        } else {
+            $('.cke_top').css('background', 'none');
+        }
+    });
 
+    CKEDITOR.on("instanceReady", function(event) {
+        $('.cke_top').css('background', 'none');
     });
 
     function pageLoad(){
