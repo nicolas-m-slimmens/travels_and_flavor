@@ -46,6 +46,32 @@ $(function(){
         e.preventDefault();
     });
 
+    $('.entry-content').find('img').each(function() {
+        var imageParent = $(this).parent();
+
+        var modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        var modalCloseButton = document.createElement('span');
+        modalCloseButton.classList.add('close');
+        modalCloseButton.innerText = 'x';
+        $(modalCloseButton).on('click', function() {
+            modal.style.display = 'none';
+        });
+        modal.appendChild(modalCloseButton);
+
+        var modalImage = document.createElement('img');
+        modalImage.src = $(this).attr('src');
+        modalImage.classList.add('modal-content');
+        modal.appendChild(modalImage);
+
+        imageParent.append(modal);
+
+        $(this).on('click', function() {
+            modal.style.display = "block";
+        });
+    });
+
     function pageLoad(){
         $('.date-picker').datetimepicker({
             format: 'DD/MM/YYYY HH:mm'
