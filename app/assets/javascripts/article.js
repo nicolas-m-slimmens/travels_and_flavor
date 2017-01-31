@@ -72,6 +72,18 @@ $(function(){
         });
     });
 
+    CKEDITOR.on("instanceReady", function(event)
+    {
+        $('.cke_button__maximize').on('click', function() {
+            if ($('.cke_maximized').size() === 1) {
+                $('.cke_top').css('background', '#fff');
+            } else {
+                $('.cke_top').css('background', 'none');
+            }
+        });
+
+    });
+
     function pageLoad(){
         $('.date-picker').datetimepicker({
             format: 'DD/MM/YYYY HH:mm'
