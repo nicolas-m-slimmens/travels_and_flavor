@@ -23,7 +23,7 @@ CKEDITOR.editorConfig = function(config) {
             items: ['TextColor', 'BGColor']
         }, {
             name: 'insert',
-            items: ['Image', 'Table', 'HorizontalRule', 'PageBreak', 'Youtube']
+            items: ['Image', 'Table', 'HorizontalRule', 'PageBreak']
         }, {
             name: 'other',
             items: ['Maximize']
