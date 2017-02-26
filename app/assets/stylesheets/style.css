@@ -489,6 +489,12 @@ a.more-link:hover {
     text-transform: uppercase;
 }
 
+#ads {
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
 /* ===========
 pagination
 ==============*/
