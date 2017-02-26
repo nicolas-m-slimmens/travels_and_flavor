@@ -1,5 +1,31 @@
 $(function(){
+    $('#votes-container').on('click', function() {
+        if ($('#vote-down').hasClass('disabled') && $('#vote-up').hasClass('disabled')) {
+            BootstrapDialog.show({
+                title: 'Información',
+                message: 'No puedes votar si no has iniciado sesión.',
+                type: BootstrapDialog.TYPE_DANGER,
+                buttons: [{
+                    label: 'Iniciar Sesión',
+                    cssClass: 'btn-primary',
+                    action: function(dialog) {
+                        window.location.href = '/login';
+                    }
+                },{
+                    label: 'Cerrar',
+                    action: function(dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+        }
+    });
+
     $('#vote-down').on('click', function() {
+        if ($(this).hasClass('disabled')) {
+            return;
+        }
+
         var url = "/article/" + $(this).attr('data-article') + "/vote_down";
         $.ajax({
             url: url,
@@ -9,20 +35,23 @@ $(function(){
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
             },
             success: function(result){
-                log.console(1);
-                if (!$('#vote-down').is(':disabled') && !$('#vote-up').is(':disabled')) {
+                if (!$('#vote-down').hasClass('disabled') && !$('#vote-up').hasClass('disabled')) {
                     $("#votes").val(Number($("#votes").val()) - 1);
                 } else {
                     $("#votes").val(Number($("#votes").val()) - 2);
                 }
 
-                $('#vote-up').removeAttr('disabled');
-                $('#vote-down').attr('disabled', true);
+                $('#vote-up').removeClass('disabled');
+                $('#vote-down').addClass('disabled');
             }
         });
     });
 
     $('#vote-up').on('click', function() {
+        if ($(this).hasClass('disabled')) {
+            return;
+        }
+
         $.ajax({
             url: "/article/" + $(this).attr('data-article') + "/vote_up",
             type: 'POST',
@@ -31,13 +60,13 @@ $(function(){
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
             },
             success: function(result){
-                if (!$('#vote-down').is(':disabled') && !$('#vote-up').is(':disabled')) {
+                if (!$('#vote-down').hasClass('disabled') && !$('#vote-up').hasClass('disabled')) {
                     $("#votes").val(Number($("#votes").val()) + 1);
                 } else {
                     $("#votes").val(Number($("#votes").val()) + 2);
                 }
-                $('#vote-up').attr('disabled', true);
-                $('#vote-down').removeAttr('disabled');
+                $('#vote-up').addClass('disabled');
+                $('#vote-down').removeClass('disabled');
             }
         });
     });

@@ -6220,7 +6220,7 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
 }
 
 /* Modal Content (Image) */

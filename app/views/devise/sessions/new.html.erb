@@ -36,9 +36,16 @@
             </div>
             <%- if devise_mapping.omniauthable? %>
                 <div class="social-share login-social">
+                  <p style="
+                  text-align: center;
+                  ">O con tu cuenta de...</p>
                   <ul class="text-center text-center">
                     <%- resource_class.omniauth_providers.each do |provider| %>
-                        <li><a class="s-facebook" href="<%= omniauth_authorize_path(resource_name, provider) %>"><i class="fa fa-<%= OmniAuth::Utils.camelize(provider).downcase.gsub(' ', '-').gsub('oauth2', '-plus') %>"></i></a></li>
+                        <li>
+                          <a class="s-facebook" title="<%= OmniAuth::Utils.camelize(provider).gsub('Oauth2', ' Plus') %>" href="<%= omniauth_authorize_path(resource_name, provider) %>">
+                            <i class="fa fa-<%= OmniAuth::Utils.camelize(provider).downcase.gsub(' ', '-').gsub('oauth2', '-plus') %>"></i>
+                          </a>
+                        </li>
                     <% end -%>
                   </ul>
                 </div>

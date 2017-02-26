@@ -18,13 +18,13 @@
             <%= raw(@article.body) %>
           </div>
           <div class="decoration">
-            <div class="input-group vote-group">
+            <div id="votes-container" class="input-group vote-group">
               <span class="input-group-btn">
-                  <button id="vote-down" data-article="<%= @article.id %>" class="btn btn-warning" <%= 'disabled' unless defined?(Devise) && user_signed_in? && !current_user.voted_down_on?(@article) %> type="button"><i class="fa fa-thumbs-down"></i></button>
+                  <button id="vote-down" data-article="<%= @article.id %>" class="btn btn-warning <%= 'disabled' unless defined?(Devise) && user_signed_in? && !current_user.voted_down_on?(@article) %>" type="button"><i class="fa fa-thumbs-down"></i></button>
               </span>
               <input id="votes" class="form-control input-transparent" style="text-align: center" value="<%= @article.get_upvotes.size - @article.get_downvotes.size %>">
               <span class="input-group-btn">
-                  <button id="vote-up" data-article="<%= @article.id %>" class="btn btn-warning" <%= 'disabled' unless defined?(Devise) && user_signed_in? && !current_user.voted_up_on?(@article) %> type="button"><i class="fa fa-thumbs-up"></i></button>
+                  <button id="vote-up" data-article="<%= @article.id %>" class="btn btn-warning <%= 'disabled' unless defined?(Devise) && user_signed_in? && !current_user.voted_up_on?(@article) %>" type="button"><i class="fa fa-thumbs-up"></i></button>
               </span>
             </div>
             <%= link_to('Volver', :back, class: 'btn btn-default') %>
