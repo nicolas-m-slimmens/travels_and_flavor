@@ -1,12 +1,15 @@
 $(function(){
     $('#vote-down').on('click', function() {
+        var url = "/article/" + $(this).attr('data-article') + "/vote_down";
         $.ajax({
-            url: "/article/" + $('#vote-down').data('article') + "/vote_down",
-            type: 'PUT',
+            url: url,
+            type: 'POST',
+            dataType: 'json',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
             },
             success: function(result){
+                log.console(1);
                 if (!$('#vote-down').is(':disabled') && !$('#vote-up').is(':disabled')) {
                     $("#votes").val(Number($("#votes").val()) - 1);
                 } else {
@@ -21,8 +24,9 @@ $(function(){
 
     $('#vote-up').on('click', function() {
         $.ajax({
-            url: "/article/" + $('#vote-up').data('article') + "/vote_up",
-            type: 'PUT',
+            url: "/article/" + $(this).attr('data-article') + "/vote_up",
+            type: 'POST',
+            dataType: 'json',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
             },

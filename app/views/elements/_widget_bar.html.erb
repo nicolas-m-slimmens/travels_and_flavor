@@ -24,7 +24,6 @@
 
   </aside>
 
-
   <aside class="widget news-letter">
     <h3 class="widget-title text-uppercase text-center">Recibí las últimas novedades </h3>
     <%= form_for(Subscriber.new, url: new_subscriber_path) do |f| %>
@@ -33,6 +32,20 @@
              class="text-uppercase text-center btn btn-subscribe">
     <% end %>
   </aside>
+
+  <aside class="widget">
+    <h3 class="widget-title text-uppercase text-center">Publicidad</h3>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Sidebar 1 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:600px"
+         data-ad-client="ca-pub-2619174307928529"
+         data-ad-slot="8346736698"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </aside>
+
   <aside class="widget">
     <h3 class="widget-title text-uppercase text-center">Articulos Populares</h3>
 
@@ -49,6 +62,7 @@
         </div>
     <% end %>
   </aside>
+
   <aside class="widget pos-padding">
     <h3 class="widget-title text-uppercase text-center">Articulos Recientes</h3>
 
@@ -71,6 +85,7 @@
       </div>
     <% end %>
   </aside>
+
   <aside class="widget border pos-padding">
     <h3 class="widget-title text-uppercase text-center">Categorias</h3>
     <ul>
@@ -84,6 +99,7 @@
       <% end %>
     </ul>
   </aside>
+
   <% unless Commontator::Comment.published.count == 0 %>
     <aside class="widget pos-padding">
       <h3 class="widget-title text-uppercase text-center">Comentarios Recientes</h3>
@@ -121,6 +137,7 @@
       </div>
     </aside>
   <% end %>
+
   <aside class="widget">
     <h3 class="widget-title text-uppercase text-center">Acerca de...</h3>
 

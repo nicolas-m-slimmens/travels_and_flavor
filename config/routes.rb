@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
   resources :category
 
-  put '/article/:id/vote_up' =>'article#vote_up', :as => :article_up_vote
+  post '/article/:id/vote_up' =>'article#vote_up', :as => :article_up_vote
 
-  put '/article/:id/vote_down' =>'article#vote_down', :as => :article_down_vote
+  post '/article/:id/vote_down' =>'article#vote_down', :as => :article_down_vote
 
   post '/subscriber/new' => 'subscriber#create', :as => :new_subscriber
 

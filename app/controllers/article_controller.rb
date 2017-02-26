@@ -2,8 +2,6 @@ class ArticleController < ApplicationController
 
   before_action :find_article, only: [:edit, :update, :show, :destroy, :vote_up, :vote_down]
 
-  load_and_authorize_resource
-
   def index
     if can? :manage, Article
       @articles = Article.all
@@ -25,10 +23,12 @@ class ArticleController < ApplicationController
   end
 
   def new
+    authorize! :manage, @article
     @article = Article.new
   end
 
   def create
+    authorize! :manage, @article
     @article = Article.create(article_params)
     if @article.save(article_params)
       flash[:notice] = 'Articulo creado con exito'
@@ -42,10 +42,11 @@ class ArticleController < ApplicationController
   end
 
   def edit
-
+    authorize! :manage, @article
   end
 
   def update
+    authorize! :manage, @article
     if @article.update_attributes(article_params)
       flash[:notice] = 'Articulo actualizado con exito'
       redirect_to article_path(@article)
@@ -56,6 +57,7 @@ class ArticleController < ApplicationController
   end
 
   def destroy
+    authorize! :manage, @article
     if @article.destroy
       flash[:notice] = 'Articulo eliminado con exito'
       redirect_to article_index_path
@@ -66,12 +68,16 @@ class ArticleController < ApplicationController
 
   def vote_up
     @article.upvote_from(current_user)
-    render :nothing => true, :status => 200, :content_type => 'text/html'
+    respond_to do |format|
+      format.json { render :json => {:status => :ok}.to_json }
+    end
   end
 
   def vote_down
     @article.downvote_from(current_user)
-    render :nothing => true, :status => 200, :content_type => 'text/html'
+    respond_to do |format|
+      format.json { render :json => {:status => :ok}.to_json }
+    end
   end
 
   private
